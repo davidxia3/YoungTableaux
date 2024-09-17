@@ -1,13 +1,5 @@
 import random
 
-def print_tableau(tableau):
-    s = ""
-    for i in range(len(tableau)):
-        for j in range(len(tableau[i])):
-            s = s + str(tableau[i][j]) + " "
-        s = s + "\n"
-    return s
-
 def generate_permutation(n):
     return random.sample(range(n), n)
 
@@ -55,15 +47,27 @@ def schensted_insertion(permutation):
         insertion_tableau, record = insertion(insertion_tableau, permutation[i])
         recording_tableau = recording(recording_tableau, i + 1, record)
 
-    print("Insertion Tableau:")
-    print(print_tableau(insertion_tableau))
-    print("")
-    print("Recording Tableau:")
-    print(print_tableau(recording_tableau))
     return insertion_tableau, recording_tableau
 
 
-schensted_insertion(generate_permutation(10))
+def find_shape(permutation):
+    insertion_tableau = []
+    recording_tableau = []
+
+    for i in range(len(permutation)):
+        insertion_tableau, record = insertion(insertion_tableau, permutation[i])
+        recording_tableau = recording(recording_tableau, i + 1, record)
+
+
+    s = ""
+    for i in range(len(insertion_tableau)):
+        s = s + str(len(insertion_tableau[i])) + "-"
+    return s
+
+
+
+
+
 
 
 
