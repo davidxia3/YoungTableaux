@@ -11,8 +11,8 @@ def recalculate_shape(empty, corner):
 
 
 
-def random_tableau(n):
-    shape = random_shape(n)
+def random_tableau(n, shape_distribution):
+    shape = random_shape(shape_distribution)
     empty = empty_tableau(shape)
 
     tableau = empty_tableau(shape)

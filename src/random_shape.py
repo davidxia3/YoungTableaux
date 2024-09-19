@@ -14,9 +14,8 @@ def find_shape_distribution(n):
     return shapes
 
 
-def random_shape(n):
-    shapes = find_shape_distribution(n)
-    elements = list(shapes.keys())
-    weights = list(shapes.values())
+def random_shape(shape_distribution):
+    elements = list(shape_distribution.keys())
+    weights = list(shape_distribution.values())
     return random.choices(elements, weights=weights, k=1)[0]
 

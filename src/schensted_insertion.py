@@ -1,7 +1,7 @@
 import random
 
 def generate_permutation(n):
-    return random.sample(range(n), n)
+    return random.sample(range(1,n+1), n)
 
 def insertion(insertion_tableau, number):
     row = 0
