@@ -2,8 +2,9 @@
 
 def has_interesting(permutation):
     insertion_tableau = []
-    
-    for number in permutation:
+    interesting_numbers = []
+    for i in range(len(permutation)):
+        number = permutation[i]
         previous_col = -1
         row = 0
         while True:
@@ -12,7 +13,8 @@ def has_interesting(permutation):
                 if previous_col == -1:
                     previous_col = 0
                 elif previous_col > 0:
-                    return True
+                    interesting_numbers.append((permutation[i], 0))
+                    previous_col = -2
                 else:
                     previous_col = -2
                 break
@@ -27,7 +29,8 @@ def has_interesting(permutation):
                 if previous_col == -1:
                     previous_col = column
                 elif previous_col > column:
-                    return True
+                    interesting_numbers.append((permutation[i], column))
+                    previous_col = -2
                 else:
                     previous_col = -2
                 break
@@ -38,11 +41,11 @@ def has_interesting(permutation):
             if previous_col == -1:
                 previous_col = column
             elif previous_col > column:
-                return True
+                interesting_numbers.append((permutation[i], column))
+                previous_col = -2
             else:
                 previous_col = -2
 
             row = row + 1
 
-    return False
-
+    return interesting_numbers
